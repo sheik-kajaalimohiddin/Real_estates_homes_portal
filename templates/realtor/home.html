@@ -1,0 +1,120 @@
+{% extends "realtor/base.html" %}
+
+{% load static %}
+
+{% block title %} | Home {% endblock %}
+
+{% block content %}
+  <!-- Breadcrumb -->
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 49%;
+  margin-bottom: 20px;
+  padding: 0 15px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+</style>
+</head>
+<section id="bc" class="mt-3" xmlns=http://www.w3.org/1999/html>
+    <div class="container"></div>
+    <!DOCTYPE html>
+</section>
+<section>
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+            <h1 class="display-4">Welcome to Advance Home Real Estate</h1>
+            <h4 style="font-size: 15px">With the limited number of homes on the current U.S. market, you need an agent with the right connections, technology and strategies to achieve your home buying or selling vision. Whether you're feeling overwhelmed and want someone to take the wheel, or you just need a second opinion and you have it covered, you can be rest assured our agent is the right agent for any level of service, in any market condition.</h4>
+        </div>
+      </div>
+    </div>
+ </section>
+<div class="row" >
+            <div class="column">
+         <div class="card" >
+		    <div class="container" >
+                {% for property in listing %}
+        	    <span class="font-weight-bold" style="font-size: 20px">Featured Property</span><br>
+                <div class="listing-image">
+                    <a href="{% url 'realtor-detailed-view' property.id %}">     <img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="{{ property.propertyImage1.url }}" width="450" height="260"></a>
+                    <!--<img src="{{ property.propertyImage.url }}" alt="property image" class="w-100" />-->
+                </div>
+                <span class="" style="font-size: 15px"> <b>Name</b> : {{ property.propertyName }}</span><br>
+                <span class="" style="font-size: 15px"> <b>Description</b> : {{ property.propertyDescription }}</span><br>
+                <span class="" style="font-size: 15px"> <b>Address</b> : {{ property.propertyAddress }}</span><br>
+                <span class="" style="font-size: 15px"> <b>Type</b> : {{ property.propertyType }}</span><br>
+                <span class="" style="font-size: 15px"> <b>Neighborhood</b> : {{ property.propertyNeighborhood }}</span><br>
+                <span class="" style="font-size: 15px"> <b>ZipCode</b> : {{ property.propertyZipCode }}</span><br>
+                <span class="" style="font-size: 15px"> <b>Status</b> : {{ property.propertyStatus }}</span><br>
+                <b>For More Details</b><a href="{% url 'realtor-detailed-view' property.id %}">   <span class="" style="font-size: 15px"> <b>CLICK HERE</b> </span><br></a>
+                {% endfor %}
+          <p></p>
+        </div>
+        </div>
+      </div>
+        <div class="column">
+         <div class="card" >
+		    <div class="container" >
+                <span class="font-weight-bold" style="font-size: 20px">Contact Us</span><br>
+                {% if user.is_authenticated %}
+                <img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://3.bp.blogspot.com/-mbBCr-PLf3s/Wj4y1LqF2AI/AAAAAAAAAuY/yVHqruI3cS43oKtVwdLq2s8oHIp5PDD_gCPcBGAYYCw/s1600/Archkala%2B-%2BReal%2BEstate%2BOffice004.jpg" width="450" height="260">
+                <span class="" style="font-size: 15px">Office Address: {{ user.profile.address }}</span><br>
+                <span class="" style="font-size: 15px">Call : {{ user.profile.Phone_Number }}</span><br>
+                <span class="" style="font-size: 15px">Email : {{ user.email }}</span><br>
+              <p></p>
+                {% else %}
+                {% for pro in profile %}
+                <img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://3.bp.blogspot.com/-mbBCr-PLf3s/Wj4y1LqF2AI/AAAAAAAAAuY/yVHqruI3cS43oKtVwdLq2s8oHIp5PDD_gCPcBGAYYCw/s1600/Archkala%2B-%2BReal%2BEstate%2BOffice004.jpg" width="450" height="260">
+                <span class="" style="font-size: 15px">Office Address: {{ pro.address }}</span><br>
+                <span class="" style="font-size: 15px">Call : {{ pro.Phone_Number }}</span><br>
+                <span class="" style="font-size: 15px">Email : {{ pro.Office_Email }}</span><br>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  <!-- Work -->
+  <section id="work" class="bg-dark text-white text-center">
+      <h1 style="font-size: 30px">Models open Monday – Wednesday – Thursday – Friday – Saturday – Sunday. Tuesday by appointment.</h1>
+    <hr>
+  </section>
+
+
+{% endblock %}

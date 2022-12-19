@@ -1,0 +1,49 @@
+{% extends "realtor/base.html" %}
+{% load static %}
+{% block content %}
+<style>
+    .buttons {
+width: 100px;
+margin: 0 auto;
+display: inline;}
+
+    .action_btn {
+width: 100px;
+margin: 0 auto;
+display: inline;}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Listings </h1>
+            <div class="row">
+                {% for property in listing %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="listing-image">
+                                <div class="row">
+                                    <a href="{% url 'realtor-detailed-view' property.id %}">  <img src="{{ property.propertyImage1.url }}" alt="property image" width="329" height="260" /></a>
+                            </div>
+                            <span class="" style="font-size: 15px"><b>Name:</b> {{ property.propertyName }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Description:</b> {{ property.propertyDescription }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Property Address:</b>{{ property.propertyAddress }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Property Type:</b>{{ property.propertyType }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Neighborhood:</b>{{ property.propertyNeighborhood }}</span><br>
+                            <span class="" style="font-size: 15px"><b>ZipCode:</b>{{ property.propertyZipCode }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Price:</b>{{ property.propertyPrice }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Status:</b>{{ property.propertyStatus }}</span><br>
+                            <span class="" style="font-size: 15px"><b>FeaturedProperty:</b>{{ property.featuredProperty }}</span><br>
+                                <b>For More Details</b>    <a href="{% url 'realtor-detailed-view' property.id %}">   <span class="" style="font-size: 15px"> <b>CLICK HERE</b> </span><br></a>
+                        </div>
+
+        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

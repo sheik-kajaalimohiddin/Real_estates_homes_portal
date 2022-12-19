@@ -1,0 +1,37 @@
+{% extends "realtor/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          <!--  <marquee width="100%" direction="right" height="100%">
+            <h3>Listings on the website</h3>
+            </marquee> -->
+            <div class="row">
+                {% for property in listing %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="listing-image">
+                                <a href="{% url 'realtor-detailed-view' property.id %}"><img src="{{ property.propertyImage1.url }}" alt="property image" class="w-100" /> </a>
+                            </div>
+                            <span class="" style="font-size: 15px"><b>Name:</b> {{ property.propertyName }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Description:</b> {{ property.propertyDescription }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Address:</b> {{ property.propertyAddress }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Property Type:</b> {{ property.propertyType }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Neighborhood:</b>{{ property.propertyNeighborhood }}</span><br>
+                            <span class="" style="font-size: 15px"><b>ZipCode:</b>{{ property.propertyZipCode }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Price:</b>{{ property.propertyPrice }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Status:</b>{{ property.propertyStatus }}</span><br>
+                            <b>For More Details</b><a href="{% url 'realtor-detailed-view' property.id %}">   <span class="" style="font-size: 15px"> <b>CLICK HERE</b> </span><br></a>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

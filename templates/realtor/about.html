@@ -1,0 +1,100 @@
+{% extends "realtor/base.html" %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  margin-bottom: 16px;
+  padding: 0 15px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+</style>
+</head>
+<body>
+<h3 style="text-align:left">Know your Realtor</h3>
+<p>Not long after obtaining her undergraduate degree in Business Administration, Madison Vance got her
+Real Estate License and became a real estate agent with a well-respected Omaha area brokerage. While
+she did quite well in this role, Madison wanted to strike out on her own and obtained her Broker’s
+    License as well. She is now the owner and operator of <b>Advance Home Real Estate</b>. </p>
+<div class="row">
+<div class="column">
+    <div class="card">
+      <div class="container">
+          {% if user.is_authenticated %}
+          <h3>{{ user.profile.First_Name }} {{user.profile.Last_Name }}</h3>
+          <img src="{{ user.profile.image.url }}" width="250" height="350"><br>
+          <span class="" style="font-size: 15px" ><b> Office Address:</b> {{ user.profile.address }}</span><br>
+          <span class="" style="font-size: 15px"><b>Call:</b> {{ user.profile.Phone_Number }}</span><br>
+          <span class="" style="font-size: 15px"><b>Email:</b>{{ user.email }}</span><br>
+          {% else %}
+          {% for Profile in object_list %}
+          <h3>{{ Profile.First_Name }} {{ Profile.Last_Name }}</h3>
+          <img src="{{ Profile.image.url }}" width="250" height="350"><br>
+          <span class="" style="font-size: 15px"><b>Office Address:</b> {{ Profile.address }}</span><br>
+          <span class="" style="font-size: 15px"><b>Call:</b> {{ Profile.Phone_Number }}</span><br>
+          <span class="" style="font-size: 15px"><b>Email:</b>{{ Profile.Office_Email }}</span><br>
+          {% endfor %}
+          {% endif %}
+          <p></p>
+      </div>
+    </div>
+</div>
+
+ <bo class="column">
+    <div class="card">
+        <div class="container">
+            <h3>Request Information</h3>
+            <form action="{% url 'customer-request-submission' %}">
+            <label for="fname" >First name:</label>
+            <br>
+            <input type="text" id="fname" name="fname" style="height:30px; width:400px;value="" required="required" /><br>
+            <label for="fname">Last name:</label>
+            <br>
+            <input type="text" id="fname" name="fname" style="height:30px; width:400px;value="" required="required" /><br>
+            <label for="lname">Mobile:</label>
+            <br>
+            <input type="text" id="fname" name="fname" style="height:30px; width:400px;value="" required="required" /><br>
+            <label for="lname">Email:</label>
+            <br>
+            <input type="text" id="fname" name="fname" style="height:30px; width:400px;value="" required="required" /><br>
+           <label for="lname">Address:</label>
+            <br>
+            <input type="text" id="fname" name="fname" style="height:40px; width:400px;value="" required="required" /><br>
+            <label for="lname">Request details:</label>
+            <br>
+            <input type="text" id="lname" name="lname" style="height:100px; width:400px;"value="" required="required" /><br>
+            <br>
+            <input type="submit" value="Submit">
+            <p></p>
+            </form>
+    </div>
+    </div>
+</body>
+</html>
+{% endblock %}

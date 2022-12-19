@@ -1,0 +1,150 @@
+{% extends "realtor/base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="fw-bold">Upload Listings</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="" class="form-label">Name</label>
+                                <input type="text" Required name="Name" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Description</label>
+                                <input type="text" Required name="Description" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Address</label>
+                                <input type="text" Required name="Address" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Property Type</label>
+                               <!-- <input type="text" Required name="Neighborhood" class="form-control"> -->
+                                <select name="type">
+                                    <option selected disabled="true">---select propertyType---</option>
+                                    <option>Tudor</option>
+                                    <option>Ranch</option>
+                                    <option>Split-Entry</option>
+                                    <option>Townhome</option>
+                                    <option>Condominium</option>
+                                    <option>Duplex</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Neighborhood</label>
+                               <!-- <input type="text" Required name="Neighborhood" class="form-control"> -->
+                                <select name="Neighborhood">
+                                    <option selected disabled="true">---select neighborhood---</option>
+                                    <option>Aksarben/Elmwood Park </option>
+                                    <option>Aksarben Village </option>
+                                    <option>Applewood </option>
+                                    <option>Armbrust Acres </option>
+                                    <option>Baker Place </option>
+                                    <option>Barrington Park </option>
+                                    <option>Bemis Park </option>
+                                    <option>Bennington </option>
+                                    <option>Benson </option>
+                                    <option>Carter Lake </option>
+                                    <option>Chalco </option>
+                                    <option>Conestoga Place </option>
+                                    <option>Country Club </option>
+                                    <option>Dundee </option>
+                                    <option>Elkhorn </option>
+                                    <option>Elmwood Park </option>
+                                    <option>First National Business Park </option>
+                                    <option>Fountain Hills </option>
+                                    <option>Gifford Park </option>
+                                    <option>Greenfields </option>
+                                    <option>Happy Hollow </option>
+                                    <option>Hillsborough </option>
+                                    <option>Irvington </option>
+                                    <option>Leawood Southwest </option>
+                                    <option>Little Italy </option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">ZipCode</label>
+                                <!--<input type="text" Required name="ZipCode" class="form-control"> -->
+                                    <select name="ZipCode">
+                                        <option selected disabled="true">---select zipcode---</option>
+                                        <option>68007</option>
+                                        <option>68010</option>
+                                        <option>68102</option>
+                                        <option>68104</option>
+                                        <option>68105</option>
+                                        <option>68106</option>
+                                        <option>68107</option>
+                                        <option>68108</option>
+                                        <option>68110</option>
+                                        <option>68111</option>
+                                        <option>68112</option>
+                                        <option>68114</option>
+                                        <option>68116</option>
+                                        <option>68117</option>
+                                        <option>68118</option>
+                                        <option>68122</option>
+                                        <option>68124</option>
+                                        <option>68127</option>
+                                        <option>68130</option>
+                                        <option>68131</option>
+                                        <option>68132</option>
+                                        <option>68134</option>
+                                        <option>68137</option>
+                                        <option>68144</option>
+                                        <option>68152</option>
+                                        <option>68154</option>
+                                        <option>68164</option>
+                                        <option>68182</option>
+                                        <option>68198</option>
+                                    </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Price</label>
+                                <input type="text" Required name="Price" class="form-control">
+                            </div>
+                             <div class="mb-3">
+                                <label for="" class="form-label">Status</label>
+                                <select name="Status">
+                                    <option>Available</option>
+                                    <option>Pending</option>
+                                    <option>Sold</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Featured Property</label>
+                                <input type="checkbox" name="featured" class="form-control">
+                            </div>
+                             <div class="mb-3">
+                                <label for="" class="form-label">Property Image</label>
+                                <input type="file" Required name="propertyImage1" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Property Image</label>
+                                <input type="file" Required name="propertyImage2" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Property Image</label>
+                                <input type="file" Required name="propertyImage3" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Property Image</label>
+                                <input type="file" Required name="propertyImage4" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

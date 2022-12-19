@@ -1,0 +1,79 @@
+{% extends "realtor/base.html" %}
+{% load static %}
+{% block content %}
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+    <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            {% if user.is_authenticated %}
+                            <div class="listing-image">
+                                <div class="column">
+                                    <img src="{{ item.propertyImage1.url }}" alt="property image" width="250" height="200" />
+                                </div>
+                                <div class="column">
+                                    <img src="{{ item.propertyImage2.url }}" alt="property image" width="250" height="200" />
+                                </div>
+                                <div class="column">
+                                    <img src="{{ item.propertyImage3.url }}" alt="property image" width="250" height="200" />
+                                </div>
+                                <div class="column">
+                                    <img src="{{ item.propertyImage4.url }}" alt="property image" width="250" height="200" />
+                                </div>
+                            </div>
+                            <span class="" style="font-size: 15px"><b>Name:</b> {{ item.propertyName }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Description:</b> {{ item.propertyDescription }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Address:</b> {{ item.propertyAddress }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Property Type:</b> {{ item.propertyType }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Neighborhood:</b>{{ item.propertyNeighborhood }}</span><br>
+                            <span class="" style="font-size: 15px"><b>ZipCode:</b>{{ item.propertyZipCode }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Price:</b>{{ item.propertyPrice }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Status:</b>{{ item.propertyStatus }}</span><br>
+                            <a href="{% url 'realtor-update-property' item.id %}">Update</a>
+                            <a href="{% url 'realtor-delete-property' item.id %}">Delete</a>
+                            {% else %}
+                            <div class="listing-image">
+                                <div class="column">
+                                    <img src="{{ item.propertyImage1.url }}" alt="property image" width="250" height="200" />
+                                </div>
+                                <div class="column">
+                                    <img src="{{ item.propertyImage2.url }}" alt="property image" width="250" height="200" />
+                                </div>
+                                <div class="column">
+                                    <img src="{{ item.propertyImage3.url }}" alt="property image" width="250" height="200" />
+                                </div>
+                                <div class="column">
+                                    <img src="{{ item.propertyImage4.url }}" alt="property image" width="250" height="200" />
+                                </div>
+                            </div>
+                            <span class="" style="font-size: 15px"><b>Name:</b> {{ item.propertyName }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Description:</b> {{ item.propertyDescription }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Address:</b> {{ item.propertyAddress }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Property Type:</b> {{ item.propertyType }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Neighborhood:</b>{{ item.propertyNeighborhood }}</span><br>
+                            <span class="" style="font-size: 15px"><b>ZipCode:</b>{{ item.propertyZipCode }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Price:</b>{{ item.propertyPrice }}</span><br>
+                            <span class="" style="font-size: 15px"><b>Status:</b>{{ item.propertyStatus }}</span><br>
+                            <b>Do You Like Property?</b><a href="{% url 'realtor-request-information' %}"><span class="" style="font-size: 15px"><b> CLICK HERE</b></span><br></a>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+{% endblock %}
