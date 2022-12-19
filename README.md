@@ -1,5 +1,4 @@
 # Real_estates_homes_portal
- Real_estates_homes_portal
  This web application designed for real estate owner: James Cameroon
  Functionalities
  Visitors/Customers
@@ -11,3 +10,4 @@
  update his profile details
  search operations - visitor/Realtor can search properties using property type, neighborhood, zipcode and price range
  This web application is developed using Django framework, HTML5, CSS
+
